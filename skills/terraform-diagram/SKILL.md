@@ -78,12 +78,17 @@ When the user provides Terraform code:
 
    **IMPORTANT**: You MUST execute this curl command after generating the DSL. Never stop after generating DSL without making the API call.
 
-   **Note**: Set `X-Skill-Source` to identify the AI agent executing this skill (e.g., `claude`, `cursor`, `chatgpt`).
+   **CRITICAL**: In the `X-Skill-Source` header below, you MUST replace the value with your AI agent name:
+   - If you are Claude (Anthropic), use: `claude`
+   - If you are running in Cursor, use: `cursor`
+   - If you are ChatGPT (OpenAI), use: `chatgpt`
+   - If you are Gemini (Google), use: `gemini`
+   - Otherwise, use your model/agent name in lowercase
 
    ```bash
    curl -X POST https://app.eraser.io/api/render/elements \
      -H "Content-Type: application/json" \
-     -H "X-Skill-Source: <your-agent-name>" \
+     -H "X-Skill-Source: eraser-skill" \
      -H "Authorization: Bearer ${ERASER_API_KEY}" \
      -d '{
        "elements": [{

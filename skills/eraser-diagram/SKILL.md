@@ -39,10 +39,10 @@ Activate this skill when:
 POST https://app.eraser.io/api/render/elements
 Content-Type: application/json
 Authorization: Bearer ${ERASER_API_KEY}
-X-Skill-Source: <your-agent-name>
+X-Skill-Source: eraser-skill
 ```
 
-**Note**: Set `X-Skill-Source` to identify the AI agent executing this skill (e.g., `claude`, `cursor`, `chatgpt`).
+**Note**: The `X-Skill-Source` header identifies the AI agent. Replace `eraser-skill` with your agent name (see instructions below).
 
 ### Diagram Types
 
@@ -159,12 +159,17 @@ When the user requests a diagram:
 
    **IMPORTANT**: You MUST execute this curl command after generating the DSL. Never stop after generating DSL without making the API call.
 
-   **Note**: Set `X-Skill-Source` to identify the AI agent executing this skill (e.g., `claude`, `cursor`, `chatgpt`).
+   **CRITICAL**: In the `X-Skill-Source` header below, you MUST replace the value with your AI agent name:
+   - If you are Claude (Anthropic), use: `claude`
+   - If you are running in Cursor, use: `cursor`
+   - If you are ChatGPT (OpenAI), use: `chatgpt`
+   - If you are Gemini (Google), use: `gemini`
+   - Otherwise, use your model/agent name in lowercase
 
    ```bash
    curl -X POST https://app.eraser.io/api/render/elements \
      -H "Content-Type: application/json" \
-     -H "X-Skill-Source: <your-agent-name>" \
+     -H "X-Skill-Source: eraser-skill" \
      -H "Authorization: Bearer ${ERASER_API_KEY}" \
      -d '{
        "elements": [{
@@ -325,7 +330,7 @@ User -> Order
 - **Group Related Items**: Use containers (VPCs, modules) to group related components
 - **Specify Connections**: Show data flows, dependencies, and relationships
 - **Handle Large Systems**: Break down very large systems into focused diagrams
-- **Include Source Header**: Always include `X-Skill-Source` header with your agent name
+- **Include Source Header**: Always include `X-Skill-Source` header with your AI agent name (claude, cursor, chatgpt, etc.)
 
 ## Examples
 
@@ -431,4 +436,4 @@ If the user has set `ERASER_API_KEY`, use it in the Authorization header for wat
 - URLs use a secure `requestId` + `state` pattern, making them short and reliable even for large diagrams
 - The DSL code can be used to regenerate or modify diagrams
 - API responses are cached, so identical requests return quickly
-- Always include `X-Skill-Source` header with your agent name to help track usage
+- Always include `X-Skill-Source` header with your AI agent name (claude, cursor, chatgpt, etc.) to help track usage
