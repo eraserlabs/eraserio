@@ -1,6 +1,6 @@
 {
   "name": "@eraserlabs/eraser-mcp",
-  "version": "0.1.0",
+  "version": "0.1.1",
   "description": "MCP server for generating diagrams with Eraser.io",
   "private": false,
   "main": "dist/index.js",
@@ -24,7 +24,7 @@
   ],
   "repository": {
     "type": "git",
-    "url": "https://github.com/eraserlabs/eraserio.git",
+    "url": "https://github.com/eraserlabs/eraser-io.git",
     "directory": "packages/eraser-mcp"
   },
   "license": "MIT",
