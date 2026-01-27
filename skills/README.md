@@ -10,7 +10,7 @@ Add to your project's skills directory:
 
 ```bash
 mkdir -p .claude/skills/eraser-diagrams
-curl -o .claude/skills/eraser-diagrams/SKILL.md https://raw.githubusercontent.com/eraserlabs/eraserio/main/skills/eraser-diagrams/SKILL.md
+curl -o .claude/skills/eraser-diagrams/SKILL.md https://raw.githubusercontent.com/eraserlabs/eraser-io/main/skills/eraser-diagrams/SKILL.md
 ```
 
 ### Cursor
@@ -18,7 +18,7 @@ curl -o .claude/skills/eraser-diagrams/SKILL.md https://raw.githubusercontent.co
 Copy the skill to your project's Cursor rules:
 
 ```bash
-curl -o .cursor/rules/eraser-diagrams.mdc https://raw.githubusercontent.com/eraserlabs/eraserio/main/skills/eraser-diagrams/SKILL.md
+curl -o .cursor/rules/eraser-diagrams.mdc https://raw.githubusercontent.com/eraserlabs/eraser-io/main/skills/eraser-diagrams/SKILL.md
 ```
 
 Or manually copy the contents of [`eraser-diagrams/SKILL.md`](eraser-diagrams/SKILL.md) to `.cursor/rules/eraser-diagrams.mdc`.

@@ -13,8 +13,8 @@ We're thrilled you're here! Whether you're fixing a typo, reporting a bug, or bu
 1. Fork the repository
 2. Clone your fork:
    ```bash
-   git clone https://github.com/YOUR_USERNAME/eraserio.git
-   cd eraserio
+   git clone https://github.com/YOUR_USERNAME/eraser-io.git
+   cd eraser-io
    ```
 3. Install dependencies:
    ```bash
