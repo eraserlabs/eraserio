@@ -5,7 +5,7 @@ Agent skills for AI coding assistants to generate architecture diagrams from cod
 ## Quick Start
 
 ```bash
-npx skills install eraserlabs/eraser-io
+npx skills add eraserlabs/eraser-io
 ```
 
 ## Available Skills
