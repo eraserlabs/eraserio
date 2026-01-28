@@ -34,7 +34,7 @@ const diagramElementSchema = z.object({
 const renderOptionsSchema = z
   .object({
     padding: z.number().optional(),
-    scale: z.union([z.literal(1), z.literal(2), z.literal(3)]).optional(),
+    imageQuality: z.union([z.literal(1), z.literal(2), z.literal(3)]).optional(),
     background: z.boolean().optional(),
     theme: z.enum(['light', 'dark']).optional(),
     format: z.enum(['png', 'jpeg']).optional(),
@@ -95,6 +95,7 @@ const singleDiagramSchema = z.object({
   styleMode: z.enum(styleModeSettings).optional(),
   typeface: z.enum(typefaceSettings).optional(),
   background: z.boolean().optional(),
+  imageQuality: z.union([z.literal(1), z.literal(2), z.literal(3)]).optional(),
 });
 
 export type RenderPromptInput = z.infer<typeof renderPromptSchema>;
@@ -139,7 +140,7 @@ const renderPromptJsonSchema: JsonSchema = {
       },
     },
     padding: { type: 'number' },
-    scale: { type: 'number', enum: [1, 2, 3] },
+    imageQuality: { type: 'number', enum: [1, 2, 3] },
     background: { type: 'boolean' },
     theme: { type: 'string', enum: ['light', 'dark'] },
     format: { type: 'string', enum: ['png', 'jpeg'] },
@@ -177,7 +178,7 @@ const renderElementsJsonSchema: JsonSchema = {
     returnElements: { type: 'boolean' },
     skipCache: { type: 'boolean' },
     padding: { type: 'number' },
-    scale: { type: 'number', enum: [1, 2, 3] },
+    imageQuality: { type: 'number', enum: [1, 2, 3] },
     background: { type: 'boolean' },
     theme: { type: 'string', enum: ['light', 'dark'] },
     format: { type: 'string', enum: ['png', 'jpeg'] },
@@ -198,6 +199,7 @@ const singleDiagramJsonSchema: JsonSchema = {
     styleMode: { type: 'string', enum: [...styleModeSettings] },
     typeface: { type: 'string', enum: [...typefaceSettings] },
     background: { type: 'boolean', description: 'Whether to include a solid background' },
+    imageQuality: { type: 'number', enum: [1, 2, 3] },
   },
 };
 
@@ -207,38 +209,23 @@ const SEQUENCE_DIAGRAM_DESCRIPTION = `Render a sequence diagram. Use Eraser's se
 Example syntax:
 \`\`\`
 title Authentication Flow
+autoNumber on
 
-// Define actors with icons
-User [icon: user]
-Browser [icon: globe]
-Server [icon: server]
-Database [icon: database]
+Client [icon: monitor, color: gray]
+Server [icon: server, color: blue]
+Service [icon: tool, color: green]
 
-// Messages between actors
-User > Browser: Enter credentials
-Browser > Server: POST /login
-Server > Database: Query user
-Database > Server: User data
-Server > Browser: JWT token
-Browser > User: Login success
-
-// Control flow
-alt [label: "Valid credentials"] {
-  Server > Browser: 200 OK
-}
-else [label: "Invalid"] {
-  Server > Browser: 401 Unauthorized
-}
-
-// Activation bars
+Client > Server: Data request
 activate Server
-Server > Database: Query
-deactivate Server
+Server <> Service: Service request
 
-// Loops
-loop [label: "Retry 3 times"] {
-  Browser > Server: Request
+loop [label: until success, color: green] {
+  Service > Service: Check availability
 }
+
+Server - Service: Data processing
+Server --> Client: Data response
+deactivate Server
 \`\`\``;
 
 const ERD_DESCRIPTION = `Render an entity-relationship diagram. Use Eraser's ERD syntax.
@@ -320,11 +307,12 @@ API Service > ElastiCache
 Worker Service > S3
 \`\`\``;
 
-const FLOWCHART_DESCRIPTION = `Render a flowchart diagram. Use Eraser's flowchart syntax.
+const FLOWCHART_DESCRIPTION = `Render a flowchart diagram. Use Eraser's flowchart syntax. Prefer horizontal layout (direction right) unless the user wants a vertical diagram.
 
 Example syntax:
 \`\`\`
 title User Registration Flow
+direction right
 
 // Nodes with shapes and icons
 Start [shape: oval, icon: play]
