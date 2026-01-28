@@ -1,6 +1,6 @@
 {
   "name": "@eraserlabs/eraser-mcp",
-  "version": "0.1.1",
+  "version": "0.2.0",
   "description": "MCP server for generating diagrams with Eraser.io",
   "private": false,
   "main": "dist/index.js",
