@@ -68,7 +68,7 @@ Add to your Claude Desktop config:
 
 ## Documentation
 
-- [Eraser API Documentation](https://docs.eraser.io)
+- [Eraser Agent Integration Documentation](https://docs.eraser.io/docs/using-ai-agent-integrations)
 - [Get an API Token](https://docs.eraser.io/reference/api-token)
 
 ## License

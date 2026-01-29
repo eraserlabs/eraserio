@@ -23,7 +23,7 @@ See the [MCP README](./packages/eraser-mcp/README.md) for setup.
 
 ## Documentation
 
-- [Eraser API Documentation](https://docs.eraser.io)
+- [Eraser Agent Integration Documentation](https://docs.eraser.io/docs/using-ai-agent-integrations)
 - [Get an API Token](https://docs.eraser.io/reference/api-token)
 
 ## License

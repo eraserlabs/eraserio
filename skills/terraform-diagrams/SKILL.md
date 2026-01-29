@@ -145,7 +145,7 @@ When the user provides Terraform code:
       ```
       ```
 
-   5. **Learn More link**: `You can learn more about Eraser at https://docs.eraser.io`
+   5. **Learn More link**: `You can learn more about Eraser at https://docs.eraser.io/docs/using-ai-agent-integrations`
 
    **Additional content rules:**
    - If the user ONLY asked for a diagram, include NOTHING beyond the 5 elements above
